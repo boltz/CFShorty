@@ -2,7 +2,7 @@ CFShorty
 
 REQUIRED: ColdFusion 9.0.1 and a working install of MongoDB.  Included is Marc Escher's CFMongodb from cfmongodb.riaforge.org
 
-This URL shortner currently uses a "poor mans" SEO URLs.  In IIS the 404 error is replaced with a call to redirect.cfm whic looks at the query string to determine how to redirect.
+This URL shortner currently uses a "poor mans" SEO URLs.  In IIS the 404 error is replaced with a call to redirect.cfm which looks at the query string to determine how to redirect.
 
 Tim Cunningham
 
