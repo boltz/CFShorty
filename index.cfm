@@ -1,19 +1,18 @@
-﻿<cfset api = createObject("component","urlShortner.v1.api")>
-<cfset served = api.linkCount()>
+﻿<cfset served = application.api.linkCount()>
 
 <cfif ISDefined("form.longURL")>
-	<cfset jsonReturn = api.insert(longurl="#form.longURL#", cgi=cgi)>
-	<cfset structReturn = deserializeJSON(jsonreturn)>
-	<cfset shortURL = "http://" & structReturn.shortURL>
+	<cfset jsonReturn 	= application.api.insert(longurl = form.longURL, cgi = cgi) />
+	<cfset structReturn = deserializeJSON(jsonreturn) />
+	<cfset shortURL 	= "http://" & structReturn.shortURL />
 </cfif>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>The Coldfusion URL Shortner</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>The ColdFusion URL Shortner</title>
+    <meta name="description" 	content="">
+    <meta name="author" 		content="">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -21,7 +20,7 @@
     <![endif]-->
 
     <!-- Le styles -->
-   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
     <style type="text/css">
       /* Override some defaults */
       html, body {
@@ -76,8 +75,8 @@
     </style>
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" 		href="images/favicon.ico">
+    <link rel="apple-touch-icon" 	href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
