@@ -1,0 +1,1 @@
+1/31/2012	Fixed: If user did not pass in http:// or https:// the shortened URL could not be found.  Reported by twitter user @Akbarsait
