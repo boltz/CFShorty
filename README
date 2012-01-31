@@ -7,6 +7,9 @@ This URL shortner currently uses a "poor mans" SEO URLs.  In IIS the 404 error i
 Tim Cunningham
 
 
+Thanks to @Coldfumonkeh Matt Gifford for making the code more tidy.
+
+
 TODO: 
 
 ColdBox-ify the project
