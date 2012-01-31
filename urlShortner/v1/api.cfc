@@ -50,14 +50,16 @@
 	</cffunction>
 	<!--- Getters End --->
 
-	<cffunction name="shortenURL" access="remote" output="false" hint="I shorten the provided URL.">
-		<cfargument name="longURL" 	type="string" required="true" />
-		<cfargument name="label" 	type="string" required="true" default="" />
-		<cfargument name="key" 		type="string" required="true" default="noKey" />
-		<cfargument name="cgi" 		type="struct" required="true" default="#variables.instance.emptystruct#" />
-			<cfset var newURL = insertURL(longURL=arguments.longURL, label=arguments.label, key=arguments.key, cgi=arguments.cgi)>
-				<cfset newURL = deserializeJSON(newURL)>
-		<cfreturn newURL.shortURL />
+	<cffunction name="shortenURL">
+		<cfargument name="longURL" 	type="string" required="true">
+		<cfargument name="label" 	type="string" required="true" default="">
+		<cfargument name="key" 		type="string" required="true" default="noKey">
+		<cfargument name="cgi" 		type="struct" required="true" default="#emptystruct#">
+		
+		<cfset arguments.longURL = cleanLongURL(arguments.longURL)>
+		<cfset var newURL = insertURL(longURL=longURL, label=label, key=key, cgi=cgi)>
+		<cfset newURL = deserializeJSON(newURL)>
+		<cfreturn newURL.shortURL>
 	</cffunction>
 	
 	<cffunction name="insert" access="remote" returnformat="JSON" output="false" hint="">
@@ -218,6 +220,15 @@
 	<cffunction name="linkCount" access="remote" output="false" hint="I return the total number of links stored within the database.">
 		<cfset var count = variables.instance.link.count() />
 		<cfreturn numberformat(count, "0") />
+	</cffunction>
+	
+	<cffunction name="cleanLongURL" access="private">
+		<cfargument name="strURL" required="true" type="string">
+		<cfset var cleanURL = arguments.strURL>
+		<cfif findNocase("http://", arguments.strURL) IS False  AND findNocase("https://", arguments.strURL) IS False>
+				<cfset cleanURL = "http://" & arguments.strURL>
+		</cfif>
+		<cfreturn cleanURL>	 
 	</cffunction>
 
 </cfcomponent>
